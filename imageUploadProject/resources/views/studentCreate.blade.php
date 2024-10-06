@@ -14,23 +14,31 @@
 
                 <div class="card-body">
 
-                <form action="{{route('uploadImage')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('create')}}" method="POST" enctype="multipart/form-data">
 
                 @csrf
 
-                    <div class="mb-3">
-                    <label for= "">Name</lable>
-                    <input tyoe="text" name="name" required class="form-control">
-                    </div>
+                
+                <div class="mb-3">
+                <label for="">Student Name</label> 
+                <input type="text" value="{{old('name')}}" name="name"> </br>
+                @error('name')
+                <span class="text-danger">{{$message}}</span><br>
+                @enderror
+                </div>
 
-                    <div class="mb-3">
-                        <label for="">Upload Image</label>
-                        <input type="file" name="image" required class="form-control">
-                    </div>
+                <div class="mb-3">
+                <label for="">Upload Image</label>
+                <input type="file" name="image" value="{{old('image')}}"> </br>
+                @error('image')
+                <span class="text-danger">{{$message}}</span><br>
+                @enderror
+                </div>
 
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
+
+                <div class="mb-3">
+                <button type="submit" value= "Create" class="btn btn-success">Save</button>
+                </div>
 
                 </form>
                 </div>
